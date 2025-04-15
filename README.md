@@ -93,6 +93,7 @@ kursovaya/
 │   ├── 2_LightAutoML_Training.ipynb
 │   ├── 3_XGBoost_Training.ipynb
 │   └── 4_AutoGluon_Training.ipynb
+│   └── 5_notebook_Training.ipynb # Google Colab ноутбук
 ├── results/
 │   ├── confusion_matrices/     # PNG матриц ошибок
 ├── README.md                   # Основная документация
