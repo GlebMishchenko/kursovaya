@@ -88,10 +88,6 @@ kursovaya/
 ├── data/
 │   ├── raw/                    # Исходные данные
 │   └── processed/              # Обработанные данные
-├── models/
-│   ├── lightautoml_model/      # Модели LightAutoML
-│   ├── xgboost_model/          # Бустинг-модели
-│   └── autogluon_model/        # AutoGluon модели
 ├── notebooks/
 │   ├── 1_Data_Preprocessing.ipynb
 │   ├── 2_LightAutoML_Training.ipynb
