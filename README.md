@@ -54,31 +54,30 @@ pip install -r requirements.txt
 ## Запуск
 
 Обработанные данные:
-
+```
 kursovaya/
 ├── data/
 │   └── processed/
-
+```
 ### Тестирование модели
 
 Запустите  необходимй файл .py в одной из папке модели, которая вас интересует:
-
+```
 kursovaya/
 ├── notebooks/
 │   ├── 1_Data_Preprocessing.ipynb
 │   ├── 2_LightAutoML_Training.ipynb
 │   ├── 3_XGBoost_Training.ipynb
 │   └── 4_AutoGluon_Training.ipynb
-
-Если Вас интересуют 
-
-## Структура проекта матрицы ошибок или сранения метрик откройте
-
+```
+Если Вас интересуют матрицы ошибок или сранения метрик откройте
+```
 kursovaya/
 ├── results/
 │   ├── confusion_matrices/     # PNG матриц ошибок
 │   └── metrics_comparison.csv  # Сравнение метрик
-
+```
+## Структура проекта 
 ```
 kursovaya/
 ├── data/
