@@ -2,42 +2,47 @@
 
 ## Описание проекта
 
-Данный проект посвящен автоматизации распознавания болезней культурных растений с помощью AutoML-фреймворков. Целью исследования является сравнение производительности моделей, созданных с помощью AutoKeras, lightAutoML, кастомной модели и кастомной модели с использованием Keras-tuner на задаче классификации изображений растений по состоянию их листьев.
+Данный проект посвящен автоматизации распознавания обнаружения аномалий в сетевом трафике и кибербезопасности с помощью AutoML-фреймворков. Целью исследования является сравнение производительности моделей, созданных с помощью AutoGluon, lightAutoML (sber) и бустинг модели на задаче обнаружения аномалий в сетевом трафике и кибербезопасности.
 
 Проект включает:
-* Предобработку данных из изображений или формата .npz.
-* Обучение моделей с использованием AutoML-фреймворков и кастомных подходов.
+* Предобработку данных.
+* Обучение моделей с использованием AutoML-фреймворков и бустинг модели.
 * Сравнение точности предсказаний различных моделей.
 
 ## Используемые инструменты
 
-* Python 3.8+
-* AutoKeras
-* lightAutoML
-* TensorFlow
-* Scikit-learn
-* OpenCV
+### Основные ML-фреймворки
+| Фреймворк       | Версия  | Тип модели                     |
+|-----------------|---------|--------------------------------|
+| LightAutoML     | 0.3.7   | Автоматический ML (Sber AI)    |
+| AutoGluon       | 0.5.0   | Автоматический ML (Amazon)     |
+| XGBoost         | 1.6.2   | Градиентный бустинг            |
+
+### Обработка данных
+| Инструмент           | Версия  | Назначение                                          |
+|----------------------|---------|-----------------------------------------------------|
+| Pandas               | 1.4.4   | Анализ и предобработка табличных данных             |
+| Scikit-learn         | 1.1.2   | Кодирование, нормализация, метрики                  |
+| Imbalanced-learn     | 0.9.1   | Балансировка данных (SMOTE) для минорных классов    |
+
+### Визуализация
+| Инструмент       | Версия  | Назначение                                           |
+|------------------|---------|------------------------------------------------------|
+| Matplotlib       | 3.5.3   | Построение графиков (матрицы ошибок, метрики)        |
+| Seaborn          | 0.12.0  | Стилизация графиков (heatmaps, barplots)             |
 
 ## Данные 
 
-Данные представляют собой изображения листьев растений, разделенные на 4 категории:
-* Blight
-* Common Rust
-* Gray Leaf Spot
-* Healthy
+В наборе данных представлен расширенный набор атак типа "распределенный отказ в обслуживании", большинство из которых используют ту или иную форму усиления за счет отражения. Набор данных имеет общий набор функций с другими наборами данных CIC NIDS, IDS2017, IDS2018 и DoS2017.
 
-Данные могут быть предоставлены в двух форматах:
-* Папка с изображениями, разделенными по категориям.
-* Архивированный файл .npz с предварительно обработанными массивами.
-
-Данные, которые использовались для проекта: [Corn or Maize Leaf Disease Dataset](https://www.kaggle.com/datasets/smaranjitghose/corn-or-maize-leaf-disease-dataset).
+Данные, которые использовались для проекта: [CIC-DDoS2019](https://www.kaggle.com/datasets/dhoogla/cicddos2019?select=NetBIOS-testing.parquet).
 
 ## Установка 
 
 1. Клонируйте репозиторий: 
 
 ```
-git clone https://github.com/Gennod/kursovaya.git cd ваш-репозиторий
+git clone https://github.com/GlebMishchenko/kursovaya.git
 ```
 
 2. Установите зависимости:
@@ -50,43 +55,52 @@ pip install -r requirements.txt
 
 Обработанные данные:
 
-* small (64x64) https://drive.google.com/file/d/1gAc3R9iSRGME9scB2aCj3FkWK52fjYTt/view?usp=sharing
-* medium (128x128) https://drive.google.com/file/d/1VrMftJvF3VuUt-k3yNPCChR9qi0GcKKe/view?usp=sharing
-* big (255*255) https://drive.google.com/file/d/1G2iGRaYnffXltUB-Fh-L5Z5sL2we3zeZ/view?usp=sharing
+kursovaya/
+├── data/
+│   └── processed/
 
 ### Тестирование модели
 
-Запустите файл test_models.py:
+Запустите  необходимй файл .py в одной из папке модели, которая вас интересует:
+
+kursovaya/
+├── notebooks/
+│   ├── 1_Data_Preprocessing.ipynb
+│   ├── 2_LightAutoML_Training.ipynb
+│   ├── 3_XGBoost_Training.ipynb
+│   └── 4_AutoGluon_Training.ipynb
+
+Если Вас интересуют 
+
+## Структура проекта матрицы ошибок или сранения метрик откройте
+
+kursovaya/
+├── results/
+│   ├── confusion_matrices/     # PNG матриц ошибок
+│   └── metrics_comparison.csv  # Сравнение метрик
 
 ```
-python test_models.py
-```
-
-Скрипт выполнит следующие шаги:
-* Загрузит и обработает данные.
-* Протестирует кастомную модель.
-* Выведет результаты сравнения точности моделей.
-
-## Остальные модели
-
-Keras-Tuner: https://drive.google.com/file/d/1OKa9gNoVn49RMHALE177Fl4FNjcbGk1_/view?usp=sharing
-lightAutoML: https://drive.google.com/file/d/1zvizShFlmKLG5DOxI37M4o84A1vpTCnX/view?usp=sharing
-AutoKeras: https://drive.google.com/file/d/1apgBqN9Uls9yqxdG0v14q416j3Ods0n4/view?usp=sharing
-
-## Структура проекта
-
-
-```
-├── data/                           # Папка с данными
-├── models/                         # Сохраненные модели и пайплайны
-│   ├── corn_disease_classifier.keras
-├── code/
-│   ├── requirements.txt            # Зависимости проекта
-│   ├── test_models.py              # Основной скрипт для тестирования
-│   ├── notebook.ipynb              # Google Colab ноутбук
-└── README.md                       # Описание проекта
+kursovaya/
+├── data/
+│   ├── raw/                    # Исходные данные
+│   └── processed/              # Обработанные данные
+├── models/
+│   ├── lightautoml_model/      # Модели LightAutoML
+│   ├── xgboost_model/          # Бустинг-модели
+│   └── autogluon_model/        # AutoGluon модели
+├── notebooks/
+│   ├── 1_Data_Preprocessing.ipynb
+│   ├── 2_LightAutoML_Training.ipynb
+│   ├── 3_XGBoost_Training.ipynb
+│   └── 4_AutoGluon_Training.ipynb
+├── results/
+│   ├── confusion_matrices/     # PNG матриц ошибок
+│   └── metrics_comparison.csv  # Сравнение метрик
+├── .gitignore
+├── README.md                   # Основная документация
+└── requirements.txt            # Зависимости
 ```
 
 ## Автор
 
-* Студент группы 23ПМИ(м)ГОГИИ Бледнов Иван Андреевич
+* Студент группы 23ПМИ(м)ГОГИИ Мищенко Глеб Олегович
