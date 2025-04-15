@@ -76,12 +76,11 @@ kursovaya/
 * Протестирует модель.
 * Выведет отчет о классификации модели.
 
-Если Вас интересуют матрицы ошибок или сранения метрик откройте
+Если Вас интересуют матрицы ошибок откройте
 ```
 kursovaya/
 ├── results/
 │   ├── confusion_matrices/     # PNG матриц ошибок
-│   └── metrics_comparison.csv  # Сравнение метрик
 ```
 ## Структура проекта 
 ```
@@ -100,8 +99,6 @@ kursovaya/
 │   └── 4_AutoGluon_Training.ipynb
 ├── results/
 │   ├── confusion_matrices/     # PNG матриц ошибок
-│   └── metrics_comparison.csv  # Сравнение метрик
-├── .gitignore
 ├── README.md                   # Основная документация
 └── requirements.txt            # Зависимости
 ```
